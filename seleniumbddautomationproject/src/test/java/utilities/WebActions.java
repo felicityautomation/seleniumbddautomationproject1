@@ -1,6 +1,11 @@
 package utilities;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
 
@@ -35,5 +40,15 @@ public class WebActions {
 		String title=driver.getTitle();
 		Reporter.log("Browser title is:="+title);
 		return title;
+	}
+	
+	public static void takeScreenshot(RemoteWebDriver driver, String screenshotName) {
+		File screenshot=driver.getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(screenshot, new File("screenshots/"+screenshotName+".PNG"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
