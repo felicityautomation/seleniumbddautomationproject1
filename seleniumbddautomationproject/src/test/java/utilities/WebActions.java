@@ -41,7 +41,7 @@ public class WebActions {
 		Reporter.log("Browser title is:="+title);
 		return title;
 	}
-	
+	//This is a new change
 	public static void takeScreenshot(RemoteWebDriver driver, String screenshotName) {
 		File screenshot=driver.getScreenshotAs(OutputType.FILE);
 		try {
